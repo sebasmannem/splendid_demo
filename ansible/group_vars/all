@@ -1,0 +1,26 @@
+#General:
+ansible_python_interpreter: "/usr/bin/python2"
+
+#barman
+barman_conf_dir: /etc/pgpure/barman/conf/barman.d
+barman_wals: /var/pgpure/barman
+
+#wal
+#The number of WAL files that should be kept on a primary database server.
+#You should size it correctly. E.a. for seperate xlog disk, use 50% of disk size divided by wal_size (which is 16MB by default)
+#Value of 100 uses a minimum of 1.6 GB
+wal_keep_segments: 100
+
+#repmgr
+pg_cluster: test
+repmgr_conf: /etc/repmgr.conf
+
+#postgres/pure
+PURE_VERSION: 4
+PG_VERSION: 9.6
+PURE_ETC: "/etc/pgpure/postgres/{{PG_VERSION}}/data/"
+PURE_DATA: "/var/pgpure/postgres/{{PG_VERSION}}/data/"
+PURE_BIN: "/usr/pgpure/postgres/{{PG_VERSION}}/bin/"
+PURE_LOG: "/var/log/pgpure/postgres/"
+PURE_URL: "http://testbase.splendiddata.com/postgrespure/4/fedora/24/noarch/postgrespure-release-test-1.1-pure4.1.fc24.noarch.rpm"
+NO_REPO: false

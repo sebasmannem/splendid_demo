@@ -1,0 +1,6 @@
+- name: enable conf.d folder
+  lineinfile: dest='{{PURE_ETC}}/postgresql.conf' line="include_dir = 'conf.d'"
+# So that we can keep the replication settings in a different conf file.
+- name: Create conf.d folder
+  file: state=directory owner=postgres group=postgres mode=755 path='{{PURE_ETC}}/conf.d'
+

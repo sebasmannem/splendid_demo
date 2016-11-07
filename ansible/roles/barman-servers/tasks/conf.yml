@@ -1,0 +1,14 @@
+- name: barman.conf
+  template: 
+    src=barman.conf 
+    dest="/etc/barman/barman.conf"
+    owner=barman 
+    group=barman
+- name: barman-client.conf per host
+  template: 
+    src=barman-client.conf 
+    dest="{{barman_conf_dir}}/{{hostvars[item].ansible_hostname|lower}}.conf" 
+    owner=barman 
+    group=barman 
+    force=false
+  with_items: "{{groups['barman-clients']}}"

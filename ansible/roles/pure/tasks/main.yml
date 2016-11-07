@@ -1,0 +1,5 @@
+# for some reason include_vars doesn't seem to work right now. Fix later and for now, just put in defaults/main.yml
+#- name: get version specific config
+#  include_vars: file="pure4.yml"
+
+- include: packages.yml

@@ -1,0 +1,7 @@
+PG_VERSION: 9.6
+PURE_VERSION: 4
+PURE_ETC: "/etc/pgpure/postgres/{{PG_VERSION}}/data/"
+PURE_DATA: "/var/pgpure/postgres/{{PG_VERSION}}/data/"
+PURE_BIN: "/usr/pgpure/postgres/{{PG_VERSION}}/data/"
+PURE_LOG: "/var/log/pgpure/postgres/"
+PURE_URL: "{{PURE_REPO}}/postgrespure/{{PURE_VERSION}}/centos/7/noarch/postgrespure-release-test-1.0-pure4beta1.el7.centos.noarch.rpm"
