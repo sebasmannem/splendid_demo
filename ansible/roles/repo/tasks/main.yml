@@ -39,14 +39,14 @@
     - base
 
 - name: create repo
-  unarchive: dest=/var/www/html creates=/var/www/html/postgrespure src=postgrespure.tar.gz owner=root group=root
+  unarchive: dest=/var/www/html creates=/var/www/html/postgrespure src="{{REPOTAR}}" owner=root group=root
 
 #This will not work for docker containers, so for those it should be un the script that is sarted by RUN 
 - name: start service
   service: name="{{item}}" state=started enabled=yes
   with_items: 
     - httpd
-    - git@
+    - git.service
   when: ansible_virtualization_type != "docker"
 
 - name: enable http in firewalld

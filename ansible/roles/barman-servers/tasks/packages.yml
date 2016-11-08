@@ -1,4 +1,4 @@
 - name: install package
-  package: name=barman
+  package: name="barman,postgres-{{PG_VERSION}}-client"
 - name: symlink barman executable
   file: src=/usr/pgpure/barman/bin/barman dest=/usr/local/bin/barman state=link
