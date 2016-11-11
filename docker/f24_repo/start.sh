@@ -12,4 +12,4 @@ done
 su - git -c 'for proj in purebuild base; do /init_git_projs.sh $proj; done'
 
 #runs in foreground
-su - git -c 'git daemon --reuseaddr --enable=receive-pack --base-path=/var/www/html/git /var/www/html/git'
+su - git -c 'git daemon --reuseaddr --enable=receive-pack --base-path=/var/lib/git /var/lib/git'
