@@ -6,7 +6,7 @@
 FROM fedora:24
 #Added yum, gzip, tar, python-dnf, sudo, iproute, and libsemanage-python for ansible stuff to work properly
 RUN dnf -y update
-RUN dnf -y install openssh-server openssh-clients python-dnf sudo iproute libsemanage-python gzip tar yum
+RUN dnf -y install openssh-server openssh-clients python-dnf sudo iproute libsemanage-python gzip tar yum python2-dnf
 COPY start.sh /start.sh
 COPY id_rsa.pub /root/.ssh/authorized_keys
 RUN chown -R root:root /root/.ssh

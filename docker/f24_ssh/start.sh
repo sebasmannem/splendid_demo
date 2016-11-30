@@ -1,7 +1,4 @@
-for type in ecdsa rsa ed25519
-do 
-    ssh-keygen -t ${type} -f /etc/ssh/ssh_host_${type}_key -N ''
-done
+ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ''
 /usr/sbin/sshd
 #cat
 #for docker run -ti, cat holds forever, but for docker run -d, cat gets no stdin and stops, stopping container.
