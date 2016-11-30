@@ -4,9 +4,9 @@
 #ssh [inspect>NetworkSettings>IPAddres]
 
 FROM centos:7
-#Added yum, gzip, tar, python-dnf, sudo, iproute, and libsemanage-python for ansible stuff to work properly
+#sudo and iproute for ansible readyness
 RUN yum -y update
-RUN yum -y install openssh-server openssh-clients python-dnf sudo iproute libsemanage-python gzip tar yum
+RUN yum -y install openssh-server openssh-clients sudo iproute
 COPY start.sh /start.sh
 COPY id_rsa.pub /root/.ssh/authorized_keys
 RUN chown -R root:root /root/.ssh
