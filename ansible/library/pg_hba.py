@@ -362,7 +362,7 @@ class PgHba(object):
                     self.add_rule(rule)
             f.close()
             self.changed = False
-        except IOError, e:
+        except IOError as e:
             raise PgHbaError("pg_hba file '{0}' doesn't exist. Use create option to autocreate.".format(self.pg_hba_file))
 
     def line_to_rule(self, line):
@@ -395,7 +395,8 @@ class PgHba(object):
         return rule
 
     def cleanEmptyRuleKeys(self, rule):
-        for k in rule.keys():
+        keys = [ key for key in rule.keys() ]
+        for k in keys:
             if not rule[k]:
                 del rule[k]
 
