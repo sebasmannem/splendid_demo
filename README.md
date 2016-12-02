@@ -53,6 +53,15 @@ Look at
 *barman.yml initializes database servers as barman clients and barman server as barman server
 cd ansible ; ansible-playbook all.yml -i staging/inventory -u root --private-key ../docker/f24_ssh/id_rsa ; cd -
 
+#barman config
+I'm looking into adding all to barman playbook. However, for now, the following needs to be done by hand:
+* Install cronie
+* start cronie (for docker container, run: 'nohup /usr/sbin/crond -n  &', else use systemd )
+* create directories for all hosts in /var/pgpure/baramand/${host}/{base,errors,incoming,streaming,wals}.
+** you can use this command to do so:
+**: barman show-server all 2>/dev/null | sed -n '/rsync/d;/\/var\/pgpure\/barman\/[a-z0-9A-Z]*\//{s/.*: //;p}' | xargs mkdir -p
+* as user barman, run 'barman switch-xlog all' to have wall receive started
+
 #Cleanup
 ##Cleanout docker containers
 docker ps
