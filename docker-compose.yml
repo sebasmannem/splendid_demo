@@ -1,0 +1,31 @@
+version: '3'
+services:
+  repo:
+    build: docker/c7_ssh
+    networks:
+      puredemo:
+        aliases:
+          - testbase.splendiddata.com
+        ipv4_address: 10.49.23.2
+  db01:
+    build: docker/c7_ssh
+    networks:
+      puredemo:
+        ipv4_address: 10.49.23.3
+  db02:
+    build: docker/c7_ssh
+    networks:
+      puredemo:
+        ipv4_address: 10.49.23.4
+  barman:
+    build: docker/c7_ssh
+    networks:
+      puredemo:
+        ipv4_address: 10.49.23.5
+networks:
+  puredemo:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.49.23.0/24
