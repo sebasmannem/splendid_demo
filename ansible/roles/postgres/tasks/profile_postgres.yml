@@ -3,5 +3,6 @@
   with_items:
   - .bash_profile
   - .bash_alias
+
 - name: add lines if they are not yet there
   script: enhance_profile.sh postgres .bashrc
