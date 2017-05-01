@@ -14,7 +14,7 @@
   with_items: "{{groups['barman-clients']}}"
 - name: Switch xlog to trigger wal receive
   become_user: barman
-  command: barman switch-xlog all
+  command: /usr/pgpure/barman/bin/barman switch-xlog all
 - name: Run barman cron to trigger receive-xlog
   become_user: barman
-  command: barman -q cron
+  command: /usr/pgpure/barman/bin/barman -q cron
