@@ -5,8 +5,8 @@ Basic aproach is that you
 * create a docker image of fedora or centos
 * use that image to spin 4 docker containers
 * use ansible to 
-** configure one as a repo and 
-** install postgres, repmgr and barman from that repo
+  * configure one as a repo and 
+  * install postgres, repmgr and barman from that repo
 
 # Step by step
 
@@ -28,25 +28,18 @@ Look at
 
 # Run playbook all.yml, or repo.yml, then repmgr.yml and then barman.yml
 
-*all.yml calls all the other playbooks in the correct order
-*repo.yml initializes repo container
-*repmgr.yml initializes database servers, making first server a master and the rest a standby (only one standby is tested for now)
-*barman.yml initializes database servers as barman clients and barman server as barman server
+* all.yml calls all the other playbooks in the correct order
+* repo.yml initializes repo container
+* repmgr.yml initializes database servers, making first server a master and the rest a standby (only one standby is tested for now)
+* barman.yml initializes database servers as barman clients and barman server as barman server
+
+```bash
 ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook ansible/all.yml -i ansible/staging/inventory -u root --private-key docker/c7_ssh/id_rsa
-
-# barman config
-
-I'm looking into adding all to barman playbook. However, for now, the following needs to be done by hand:
-* Install cronie
-* start cronie (for docker container, run: 'nohup /usr/sbin/crond -n  &', else use systemd )
-* create directories for all hosts in /var/pgpure/baramand/${host}/{base,errors,incoming,streaming,wals}.
-** you can use this command to do so:
-**: barman show-server all 2>/dev/null | sed -n '/rsync/d;/\/var\/pgpure\/barman\/[a-z0-9A-Z]*\//{s/.*: //;p}' | xargs mkdir -p
-* as user barman, run 'barman switch-xlog all' to have wall receive started
+```
 
 # Cleanup
 
 ## Cleanout docker containers
 
-docker-compose kill
-docker-compose rm
+* `docker-compose kill`
+* `docker-compose rm`
