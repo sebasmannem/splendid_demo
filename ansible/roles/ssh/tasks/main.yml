@@ -18,7 +18,7 @@
 - name: add to known_hosts
   become_user: '{% if inventory_hostname in ssh_src_hosts %}{{ssh_src_user}}{% else %}{{ssh_dst_user}}{% endif %}'
   script: add_known_hosts.sh "{{item}}"
-  with_items: '[ {% for host in play_hosts %}"{{hostvars[host].ansible_hostname}}", "{{hostvars[host].ansible_default_ipv4.address}}"{% if not loop.last %}, {% endif %}{% endfor %} ]'
+  with_items: '[ {% for host in play_hosts %}"{{hostvars[host].inventory_hostname}}", "{{hostvars[host].ansible_default_ipv4.address}}"{% if not loop.last %}, {% endif %}{% endfor %} ]'
 
 - name: remove /var/run/nologin if it exists, so that normal users can login
   file: path=/var/run/nologin state=absent
