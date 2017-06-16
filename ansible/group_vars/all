@@ -22,6 +22,7 @@ PURE_ETC: "/etc/pgpure/postgres/{{PG_VERSION}}/data/"
 PURE_DATA: "/var/pgpure/postgres/{{PG_VERSION}}/data/"
 PURE_BIN: "/usr/pgpure/postgres/{{PG_VERSION}}/bin/"
 PURE_LOG: "/var/log/pgpure/postgres/"
+#PURE_URL: "http://testbase.splendiddata.com/postgrespure/4/fedora/25/noarch/postgrespure-release-test-1.2-pure4.2.fc25.noarch.rpm"
 PURE_URL: "http://testbase.splendiddata.com/postgrespure/4/centos/7/noarch/postgrespure-release-test-1.2-pure4.1.el7.centos.noarch.rpm"
 NO_REPO: false
 
