@@ -1,8 +1,0 @@
-- name: copy profile files
-  copy: src='{{item}}' dest='/root/{{item}}' owner=root group=root mode=644 force=no
-  with_items:
-  - .bash_profile
-  - .bash_alias
-
-- name: add lines if they are not yet there
-  script: enhance_profile.sh postgres .bashrc

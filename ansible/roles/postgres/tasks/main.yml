@@ -1,3 +1,2 @@
 - include: packages.yml
-- include: profile_postgres.yml
 - include: conf.yml

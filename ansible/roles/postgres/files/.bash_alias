@@ -1,5 +1,0 @@
-alias ls='ls -aF --color'
-alias ll='ls -l'
-
-alias hist='history | grep $1'
-alias psl='ps -aef | grep $1'
